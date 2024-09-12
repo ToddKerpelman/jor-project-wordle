@@ -17,7 +17,7 @@ function Game() {
   }
 
   return <><div>You should guess some stuff</div>
-    <GuessHistory guesses={guesses} />
+    <GuessHistory guesses={guesses} answer={answer} />
     <UserInput guessMade={guessMade} />
   </>;
 }

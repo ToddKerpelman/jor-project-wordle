@@ -1,11 +1,13 @@
 import React from 'react';
-import { range } from '../../utils';
-
-function GridGuess({ guess }) {
+import { checkGuess } from '../../game-helpers';
+function GridGuess({ guess, answer }) {
+  const results = checkGuess(guess, answer);
 
   return <p className="guess">
-    {range(0, 5).map(i => {
-      return <span key={i} className="cell">{guess[i]}</span>
+    {results.map((result, index) => {
+      // Meh. Not super crazy about checking for space characters.
+      const classes = `cell ${result.letter !== " " ? result.status : ""}`;
+      return <span key={index} className={classes}>{result.letter}</span>
     })}
 
   </p>;
